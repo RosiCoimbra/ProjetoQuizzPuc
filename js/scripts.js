@@ -74,149 +74,142 @@ const questions = [
   },
 ]
 
-// substituição do quiz para a primeir pergunta
+// substituição do quiz para a primeira pergunta
 function init() {
-    // criar a primeira pergunta
+  const user = document.querySelector('#nameUser').value
+  // criar a primeira pergunta
+  if(user.length > 0){
+    document.querySelector('#modal').classList.add('hide')
     createQuestion(0);
+    document.querySelector('#displayNameUser').textContent = user
+    document.querySelector("#questions-total").textContent = questions.length;
+  }
 }
 
 // Cria a pergunta
 function createQuestion(i) {
-   
-    // Limpar a questão anterior
-    const oldButtons = answersBox.querySelectorAll("button");
 
-    oldButtons.forEach(function(btn) {
-        btn.remove();
+  // Limpar a questão anterior
+  const oldButtons = answersBox.querySelectorAll("button");
+  oldButtons.forEach(btn => btn.remove());
+
+  // Alterar o texto e o indetificador da pergunta
+  question.querySelector("#question-text").textContent = questions[i].question;
+  document.querySelector("#question-number").textContent = i + 1;
+
+  // Insere as alternativas
+  questions[i].answers.forEach((answer, i) => {
+
+    // Cria o template do botão do quiz
+    const answerTemplate = document.querySelector(".answer-template").cloneNode(true);
+
+    const letterBtn = answerTemplate.querySelector(".btn-letter");
+    const answerText = answerTemplate.querySelector(".question-answer");
+
+    letterBtn.textContent = letters[i];
+    answerText.textContent = answer['answer'];
+
+    answerTemplate.setAttribute("correct-answer", answer["correct"]);
+
+    // Remover hide e template class
+    answerTemplate.classList.remove("hide");
+    answerTemplate.classList.remove("answer-template");
+
+    // Inserir a alternativa na tela
+    answersBox.appendChild(answerTemplate);
+
+    // Inserir um evento de click no botão
+    answerTemplate.addEventListener("click", function () {
+      checkAnswer(this);
     });
 
-    // Alterar o texto da pergunta
-    const questionText = question.querySelector("#question-text");
-    const questionNumber = question.querySelector("#question-number");
+  });
 
-    questionText.textContent = questions[i].question;
-    questionNumber.textContent = i + 1;
-
-    // Insere as alternativas
-    questions[i].answers.forEach(function(answer, i) {
-
-        // Cria o template do botão do quiz
-        const answerTemplate = document.querySelector(".answer-template").cloneNode(true);
-
-        const letterBtn  = answerTemplate.querySelector(".btn-letter");
-        const answerText = answerTemplate.querySelector(".question-answer");
-
-        letterBtn.textContent = letters[i];
-        answerText.textContent = answer['answer'];
-
-        answerTemplate.setAttribute("correct-answer", answer["correct"]);
-
-        // Remover hide e template class
-        answerTemplate.classList.remove("hide");
-        answerTemplate.classList.remove("answer-template");
-
-        // Inserir a alternativa na tela
-        answersBox.appendChild(answerTemplate);
-
-        // Inserir um evento de click no botão
-        answerTemplate.addEventListener("click", function() {
-            checkAnswer(this);
-        });
-    
-    });
-
-    // Incrementar o número da questão
-    actualQuestion++;
+  // Incrementar o número da questão
+  actualQuestion++;
 }
 
 // Verificando a resosta do usuário
 function checkAnswer(btn) {
-   
-    // seleciona todos os botões
-    const buttons = answersBox.querySelectorAll("button");
 
-    // verifica se a resposta está correta e adiciona classes aos botões
-    buttons.forEach(function(button) {
+  // seleciona todos os botões
+  const buttons = answersBox.querySelectorAll("button");
 
-        if(button.getAttribute('correct-answer') == 'true') {
-            
-            button.classList.add("correct-answer");
+  // verifica se a resposta está correta e adiciona classes aos botões
+  buttons.forEach(button => {
 
-            if(btn === button) {
-                // incrementa os pontos
-                points++;
-            }
+    if (button.getAttribute('correct-answer') == 'true') {
 
-        }else {
+      button.classList.add("correct-answer");
 
-            button.classList.add("wrong-answer");
-        }
-    });
-    
-    // Exibir próxima pergunta
-    nextQuestion();
+      if (btn === button) {
+        // incrementa os pontos
+        points++;
+      }
+
+    } else {
+
+      button.classList.add("wrong-answer");
+    }
+  });
+
+  // Exibir próxima pergunta
+  nextQuestion();
 }
 
 // Exibi a próxima pergunta no quizz
 function nextQuestion() {
 
-    // timer usuário ver as respostas
-    setTimeout(function() {
+  // timer usuário ver as respostas
+  setTimeout(() => {
 
-        // verifica se ainda há perguntas
-        if(actualQuestion >= questions.length) {
-            // apresenta mensagem de sucesso
-            showSucccessMessage();
-            return;
-        }
-            createQuestion(actualQuestion);
+    // verifica se ainda há perguntas
+    if (actualQuestion >= questions.length) {
+      // apresenta mensagem de sucesso
+      showSucccessMessage();
+      return;
+    }
+    createQuestion(actualQuestion);
 
-    }, 700);
+  }, 700);
 
 }
 
 // exibe a tela final
-function showSucccessMessage(){
+function showSucccessMessage() {
 
-    hideOrShowQuizz();
+  hideOrShowQuizz();
 
-    // trocar dados da tela de sucesso
+  // trocar dados da tela de sucesso
 
-    // calcular o score
-    const score = ((points / questions.length) * 100).toFixed(2);
+  // calcular o score
+  const score = ((points / questions.length) * 100).toFixed(2);
 
-    const displayScore = document.querySelector("#display-score span");
+  const displayScore = document.querySelector("#display-score span");
 
-    displayScore.textContent = score.toString();
+  displayScore.textContent = score.toString();
 
-    // alterar o número de perguntas corretas
-    const correctAnswers = document.querySelector("#correct-answers");
+  // alterar o número de perguntas corretas
+  const correctAnswers = document.querySelector("#correct-answers");
 
-    correctAnswers.textContent = points;
+  correctAnswers.textContent = points;
 
-    //alterar o total de perguntas
-    const totalQuestions = document.querySelector("#questions-qty");
-    totalQuestions.textContent = questions.length;
+  //alterar o total de perguntas
+  const totalQuestions = document.querySelector("#questions-qty");
+  totalQuestions.textContent = questions.length;
 }
 
 // mostra ou esconde o score
-function hideOrShowQuizz(){
-    quizzContainer.classList.toggle("hide");
-    scoreContainer.classList.toggle("hide");
+function hideOrShowQuizz() {
+  document.querySelector('.quizz-header').classList.toggle('hide');
+  quizzContainer.classList.toggle("hide");
+  scoreContainer.classList.toggle("hide");
 }
 
 // Reiniciar o quizz
-const restartBtn = document.querySelector("#restart");
-
-restartBtn.addEventListener("click", function() {
-
-    // zerar o jogo
-    actualQuestion = 0;
-    points = 0;
-    hideOrShowQuizz();
-    init();
-
-});
-
-// Inicialização do Quizz
-init();
+function restartQuizz() {
+  actualQuestion = 0;
+  points = 0;
+  hideOrShowQuizz();
+  init();
+}

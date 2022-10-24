@@ -1,36 +1,64 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./images/favicon.png" type="image/png">
     <title>Quizz Programação</title>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <script src="js/scripts.js" defer></script>
 </head>
+
 <body>
-    <h1 id="main-title">Quizz de programação</h1>
-    <!-- SCORE BOARD -->
-    <div id="score-container" class="hide">
-        <h2>Parabéns!</h2>
-        <p id="display-score"><span>90</span>%</p>
-        <p>Você acertou <span id="correct-answers">0</span> de <span id="questions-qty">10</span> perguntas</p>
-        <button id="restart">Refazer quizz!</button>
-    </div>
-    <!-- QUIZZ CONTAINER -->
-    <div id="quizz-container">
-        <p id="question">
-            <span id="question-number">1</span> - <span id="question-text">Qual é a unidade de medida para metros?</span>
-        </p>
-        <div id="answers-box">
-            <button><span class="btn-letter">a</span> <span class="question-answer">m</span> </button>
-            <button><span class="btn-letter">b</span> <span class="question-answer">km</span> </button>
-            <button><span class="btn-letter">c</span> <span class="question-answer">ms</span> </button>
-            <button><span class="btn-letter">d</span> <span class="question-answer">r</span> </button>
+    <!-- MODAL NAME USER -->
+    <div class="modal" id="modal">
+        <div class="modal-container">
+            <p>Insira o nome do jogador</p>
+            <input type="text" placeholder="Digite seu nome" id="nameUser">
+            <button onclick="init()">Iniciar Quizz</button>
         </div>
     </div>
-
-    <!-- TEMPLATE DA RESPOSTA -->
-    <button class="answer-template hide"><span class="btn-letter">a</span> <span class="question-answer">m</span> </button>    
+    <header>
+        <h1 class="main-title">Quizz de programação</h1>
+    </header>
+    <main>
+        <div class="main-container">
+            <!-- SCORE BOARD -->
+            <div id="score-container" class="hide">
+                <h2>Parabéns!</h2>
+                <p id="display-score"><span></span>%</p>
+                <p>Você acertou <span id="correct-answers"></span> de <span id="questions-qty"></span> perguntas</p>
+                <button id="restart" onclick="restartQuizz()">Refazer quizz!</button>
+            </div>
+            <!-- QUIZZ CONTAINER -->
+            <div class="quizz-header">
+                <div><span id="question-number">0</span> de <span id="questions-total">0</span></div>
+                <div class="quizz-header-timer">00:00</div>
+                <div id="displayNameUser">-</div>
+            </div>
+            <div id="quizz-container">
+                <p id="question">
+                    <span id="question-text"></span>
+                </p>
+                <div class="quizz-answers-container">
+                    <div id="answers-box">
+                        <button><span class="btn-letter">a</span> <span class="question-answer">-</span> </button>
+                        <button><span class="btn-letter">b</span> <span class="question-answer">-</span> </button>
+                        <button><span class="btn-letter">c</span> <span class="question-answer">-</span> </button>
+                        <button><span class="btn-letter">d</span> <span class="question-answer">-</span> </button>
+                    </div>
+                    <img src="https://www.pngmart.com/files/7/PHP-Transparent-Background.png" alt="">
+                </div>
+            </div>
+            <!-- TEMPLATE DA RESPOSTA -->
+            <button class="answer-template hide"><span class="btn-letter">a</span> <span class="question-answer">m</span></button>
+        </div>
+    </main>
 </body>
+
 </html>
