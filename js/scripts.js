@@ -1,9 +1,10 @@
 // Declaração variáveis
 const question = document.querySelector("#question");
 const answersBox = document.querySelector("#answers-box");
-const quizzContainer = document.querySelector("#quizz-container");
+const quizContainer = document.querySelector("#quizz-container");
 const scoreContainer = document.querySelector("#score-container");
 const letters = ["a", "b", "c", "d"];
+let user = ''
 let points = 0;
 let actualQuestion = 0;
 
@@ -76,7 +77,7 @@ const questions = [
 
 // substituição do quiz para a primeira pergunta
 function init() {
-  const user = document.querySelector('#nameUser').value
+  user = document.querySelector('#nameUser').value
   // criar a primeira pergunta
   if(user.length > 0){
     document.querySelector('#modal').classList.add('hide')
@@ -197,19 +198,44 @@ function showSucccessMessage() {
   //alterar o total de perguntas
   const totalQuestions = document.querySelector("#questions-qty");
   totalQuestions.textContent = questions.length;
+
+  storeResult()
 }
 
 // mostra ou esconde o score
 function hideOrShowQuizz() {
   document.querySelector('.quizz-header').classList.toggle('hide');
-  quizzContainer.classList.toggle("hide");
+  quizContainer.classList.toggle("hide");
   scoreContainer.classList.toggle("hide");
 }
 
-// Reiniciar o quizz
+// Reiniciar o quiz
 function restartQuizz() {
+  user = ''
   actualQuestion = 0;
   points = 0;
   hideOrShowQuizz();
   init();
+}
+
+function storeResult(){
+  const previousResults = JSON.parse(localStorage.getItem('quizResults'))
+  let userData = []
+
+  if(previousResults){
+    userData = [...previousResults, {
+      player: user,
+      hits: points,
+      errors: questions.length - points
+    }]
+  } else {
+    userData = [{
+      player: user,
+      hits: points,
+      errors: questions.length - points
+    }]
+  }
+  
+  
+  localStorage.setItem('quizResults', JSON.stringify(userData))
 }

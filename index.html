@@ -8,9 +8,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="./images/favicon.png" type="image/png">
-    <title>Quizz Programação</title>
+    <title>Quiz Programação | Home</title>
     <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/global.css">
     <script src="js/scripts.js" defer></script>
 </head>
 
@@ -20,11 +20,16 @@
         <div class="modal-container">
             <p>Insira o nome do jogador</p>
             <input type="text" placeholder="Digite seu nome" id="nameUser">
-            <button onclick="init()">Iniciar Quizz</button>
+            <div>
+                <button onclick="init()">Iniciar Quiz</button>
+                <a href="./pages/history.html">
+                    <button>Ranking</button>
+                </a>
+            </div>
         </div>
     </div>
     <header>
-        <h1 class="main-title">Quizz de programação</h1>
+        <h1 class="main-title">Quiz de programação</h1>
     </header>
     <main>
         <div class="main-container">
@@ -34,6 +39,7 @@
                 <p id="display-score"><span></span>%</p>
                 <p>Você acertou <span id="correct-answers"></span> de <span id="questions-qty"></span> perguntas</p>
                 <button id="restart" onclick="restartQuizz()">Refazer quizz!</button>
+                <button><a href="./pages/history.html">Histórico</a></button>
             </div>
             <!-- QUIZZ CONTAINER -->
             <div class="quizz-header">
@@ -56,7 +62,8 @@
                 </div>
             </div>
             <!-- TEMPLATE DA RESPOSTA -->
-            <button class="answer-template hide"><span class="btn-letter">a</span> <span class="question-answer">m</span></button>
+            <button class="answer-template hide"><span class="btn-letter">a</span> <span
+                    class="question-answer">m</span></button>
         </div>
     </main>
 </body>

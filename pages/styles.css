@@ -1,0 +1,40 @@
+.back_button {
+  padding: .5rem 1rem;
+  background-color: var(--blue-900);
+  color: var(--white);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.1rem;
+  border: 0;
+  border-radius: 4px;
+}
+
+.back_button:hover {
+  background-color: var(--orange-700);
+}
+
+.table-container {
+  margin-top: 1rem;
+  background-color: var(--blue-50);
+  padding: 1rem;
+  border-radius: 12px;
+  text-align: center;
+  border: 1px solid var(--blue-900);
+  border-collapse: separate;
+}
+
+.table-container th {
+  font-family: 'Baloo 2', cursive;
+  font-size: 1.25rem;
+  padding: 0 1rem;
+}
+
+.table-container th,
+.table-container td {
+  border-bottom: 1px solid var(--gray-100);
+}
+
+.table-container td {
+  padding: 0.5rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.1rem;
+}

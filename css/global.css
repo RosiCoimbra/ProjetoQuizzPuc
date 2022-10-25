@@ -12,6 +12,7 @@
     --gray-800: #202024;
     --gray-900: #121214;
 
+    --blue-50: #f0f9ff;
     --blue-100: #CDDDE8;
     --blue-200: #e0f2fe;
     --blue-300: #93c5fd;
@@ -42,6 +43,15 @@ body {
     position: relative;
 }
 
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
 .modal {
     position: absolute;
     width: 100%;
@@ -70,6 +80,18 @@ body {
     color: var(--white);
 }
 
+.modal-container div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.modal-container div a,
+.modal-container div button {
+    width: 100%;
+}
+
 .modal-container input,
 .modal-container button {
     border-radius: 4px;
@@ -80,13 +102,16 @@ body {
 
 .modal-container button {
     cursor: pointer;
-    background-color: var(--blue-100);
+    background-color: var(--blue-700);
     font-weight: bold;
     letter-spacing: 1px;
+    color: var(--white);
+    font-size: 1.1rem;
+    font-family: 'Baloo 2', cursive;
 }
 
 .modal-container button:hover {
-    background-color: var(--blue-200);
+    background-color: var(--orange-700);
 }
 
 .hide {
@@ -122,9 +147,9 @@ body {
     border-radius: 8px;
 }
 
-.quizz-header-timer {
+/* .quizz-header-timer {
     font-size: 2.5rem;
-}
+} */
 
 .main-container {
     display: flex;
@@ -167,7 +192,7 @@ body {
 
 #restart {
     background-color: var(--orange-700);
-    color: #fff;
+    color: var(--white);
     font-weight: bold;
     height: 50px;
     border-radius: 25px;
@@ -193,7 +218,7 @@ body {
     border-radius: 25px;
     overflow: hidden;
     padding: 2rem;
-    background-color: #f0f9ff;
+    background-color: var(--blue-50);
 }
 
 #question {
@@ -250,7 +275,7 @@ body {
     font-size: 30px;
     font-weight: bold;
     background-color: var(--orange-700);
-    color: #fff;
+    color: var(--white);
     border-radius: 50%;
     line-height: 40px;
     text-align:  center;
@@ -277,7 +302,7 @@ body {
 #quizz-container .correct-answer:hover,
 #quizz-container .correct-answer .btn-letter {
     background-color: var(--green-700);
-    color: #fff;
+    color: var(--white);
 }
 
 /*  RESPONSIVO */
