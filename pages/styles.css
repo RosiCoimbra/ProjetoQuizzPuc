@@ -42,3 +42,24 @@
   color: var(--blue-900);
   font-size: 1.2rem;
 }
+
+/*  RESPONSIVO */
+@media(max-width: 450px) {
+  body {
+    font-size: 14px;
+  }
+
+  .table-container th {
+    font-size: 0.7rem;
+    padding: 0 0.5rem;
+  }
+
+  .table-container th:nth-child(2) {
+    padding: 0 1.1rem;
+  }
+
+  .table-container td {
+    font-size: 0.6rem;
+    padding: 0.2rem;
+  }
+}

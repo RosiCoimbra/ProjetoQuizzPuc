@@ -344,9 +344,34 @@ audio::-webkit-media-controls-time-remaining-display {
 /*  RESPONSIVO */
 @media(max-width: 450px) {
 
-    #quizz-container {
+    body {
+        font-size: 14px;
+    }
+
+    .modal {
+        padding: 0 1rem;
+    }
+
+    .quizz-header {
         width: 100%;
-        border: none;
+        font-size: 0.8rem;
+    }
+
+    .quizz-header div {
+        padding: .5rem 1rem;
+    }
+
+    .quizz-answers-container img {
+        display: none;
+    }
+
+    #quizz-container {
+        width: 95%;
+        padding: 1rem;
+    }
+
+    #question {
+        font-size: 1.1rem;
     }
 
     #answers-box button {
@@ -355,5 +380,9 @@ audio::-webkit-media-controls-time-remaining-display {
 
     #score-container {
         width: 90%;
+    }
+
+    audio {
+        width: 100%;
     }
 }
