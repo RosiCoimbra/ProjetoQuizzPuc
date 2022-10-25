@@ -1,5 +1,6 @@
 // Declaração variáveis
 const question = document.querySelector("#question");
+const questionAudio = document.querySelector("#question-audio");
 const answersBox = document.querySelector("#answers-box");
 const quizContainer = document.querySelector("#quizz-container");
 const scoreContainer = document.querySelector("#score-container");
@@ -12,6 +13,7 @@ let actualQuestion = 0;
 const questions = [
   {
     "question": "PHP foi desenvolvido para qual fim?",
+    "audio": "paris.mp3",
     "answers": [
       {
         "answer": "back-end",
@@ -75,6 +77,23 @@ const questions = [
   },
 ]
 
+// Gerar lista de números aleatórios
+let randomNumberListForQuestions = randomNumberListGenerator(questions.length)
+let randomNumberListForAnswer = randomNumberListGenerator(4)
+
+function randomNumberListGenerator(count){
+  const randomNumberList = []
+
+  while (randomNumberList.length < count) {
+    let randomNumber = Number((Math.random() * ((count - 1) - 0) + 0).toFixed(0));
+    let numberExist = randomNumberList.includes(randomNumber)
+    if (!numberExist) {
+      randomNumberList.push(randomNumber)
+    }
+  }
+  return randomNumberList
+}
+
 // substituição do quiz para a primeira pergunta
 function init() {
   user = document.querySelector('#nameUser').value
@@ -92,7 +111,7 @@ function createQuestion(i) {
   let seconds = 15
   document.querySelector("#seconds").textContent = seconds
 
-  //Iniciar contador de tempo (30 segundos)
+  //Iniciar contador de tempo (15 segundos)
   const timer = setInterval(() => {
     seconds--
     if(seconds > 9) {
@@ -110,24 +129,36 @@ function createQuestion(i) {
   // Limpar a questão anterior
   const oldButtons = answersBox.querySelectorAll("button");
   oldButtons.forEach(btn => btn.remove());
+  questionAudio.querySelectorAll('source').forEach(item => item.remove())
+  
 
   // Alterar o texto e o indetificador da pergunta
-  question.querySelector("#question-text").textContent = questions[i].question;
+  question.querySelector("#question-text").textContent = questions[randomNumberListForQuestions[i]].question;
   document.querySelector("#question-number").textContent = i + 1;
 
-  // Insere as alternativas
-  questions[i].answers.forEach((answer, i) => {
+  // Insere o audio da pergunta caso haja
+  if(questions[randomNumberListForQuestions[i]].audio){
+    const elementAudio = document.createElement('source')
+    elementAudio.setAttribute('src', `../music/${questions[randomNumberListForQuestions[i]].audio}`)
+    elementAudio.setAttribute('type', 'audio/mpeg')
+    questionAudio.appendChild(elementAudio)
+    questionAudio.classList.remove('hide')
+  } else {
+    questionAudio.classList.add('hide')
+  }
 
+  // Insere as alternativas
+  for(x = 0; x < randomNumberListForAnswer.length; x++){
     // Cria o template do botão do quiz
     const answerTemplate = document.querySelector(".answer-template").cloneNode(true);
 
     const letterBtn = answerTemplate.querySelector(".btn-letter");
     const answerText = answerTemplate.querySelector(".question-answer");
 
-    letterBtn.textContent = letters[i];
-    answerText.textContent = answer['answer'];
+    letterBtn.textContent = letters[x];
+    answerText.textContent = questions[randomNumberListForQuestions[i]].answers[randomNumberListForAnswer[x]]['answer'];
 
-    answerTemplate.setAttribute("correct-answer", answer["correct"]);
+    answerTemplate.setAttribute("correct-answer", questions[randomNumberListForQuestions[i]].answers[randomNumberListForAnswer[x]]["correct"]);
 
     // Remover hide e template class
     answerTemplate.classList.remove("hide");
@@ -140,14 +171,13 @@ function createQuestion(i) {
     answerTemplate.addEventListener("click", function () {
       checkAnswer(this, timer);
     });
-
-  });
+  }
 
   // Incrementar o número da questão
   actualQuestion++;
 }
 
-// Verificando a resosta do usuário
+// Verificando a resposta do usuário
 function checkAnswer(btn, timer) {
   clearInterval(timer)
 
@@ -178,6 +208,8 @@ function checkAnswer(btn, timer) {
 
 // Exibi a próxima pergunta no quizz
 function nextQuestion() {
+  questionAudio.pause()
+  questionAudio.currentTime = 0
 
   // timer usuário ver as respostas
   setTimeout(() => {
@@ -198,8 +230,6 @@ function nextQuestion() {
 function showSucccessMessage() {
 
   hideOrShowQuizz();
-
-  // trocar dados da tela de sucesso
 
   // calcular o score
   const score = ((points / questions.length) * 100).toFixed(2);
@@ -233,6 +263,8 @@ function restartQuizz() {
   actualQuestion = 0;
   points = 0;
   hideOrShowQuizz();
+  randomNumberListForQuestions = randomNumberListGenerator(questions.length)
+  randomNumberListForAnswer = randomNumberListGenerator(4)
   init();
 }
 

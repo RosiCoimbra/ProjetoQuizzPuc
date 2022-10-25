@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="./images/favicon.png" type="image/png">
     <title>Quiz Programação | Home</title>
-    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/global.css">
     <script src="js/scripts.js" defer></script>
 </head>
@@ -34,12 +34,13 @@
     <main>
         <div class="main-container">
             <!-- SCORE BOARD -->
+            <!-- <div id="score-container" class="hide"> -->
             <div id="score-container" class="hide">
-                <h2>Parabéns!</h2>
+                <h2>Quiz Finalizado!</h2>
                 <p id="display-score"><span></span>%</p>
                 <p>Você acertou <span id="correct-answers"></span> de <span id="questions-qty"></span> perguntas</p>
-                <button id="restart" onclick="restartQuizz()">Refazer quizz!</button>
-                <button><a href="./pages/history.html">Histórico</a></button>
+                <button class="score-buttons" id="restart" onclick="restartQuizz()">Refazer quiz!</button>
+                <a href="./pages/history.html"><button class="score-buttons">Ranking</button></a>
             </div>
             <!-- QUIZZ CONTAINER -->
             <div class="quizz-header">
@@ -51,6 +52,9 @@
                 <p id="question">
                     <span id="question-text"></span>
                 </p>
+                <audio controls id="question-audio" class="hide">
+                  Your browser does not support the audio element.
+                </audio>
                 <div class="quizz-answers-container">
                     <div id="answers-box">
                         <button><span class="btn-letter">a</span> <span class="question-answer">-</span> </button>

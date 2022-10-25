@@ -138,10 +138,10 @@ button {
 }
 
 .quizz-header div {
-    background-color: var(--blue-200);
+    background-color: var(--blue-700);
     padding: .5rem 1.5rem;
-    color: var(--gray-900);
-    border-radius: 8px;
+    color: var(--white);
+    border-radius: 4px;
 }
 
 .quizz-header .quiz-header-flex {
@@ -165,16 +165,21 @@ button {
 /*  SCORE CONTAINER */
 
 #score-container {
-    background-color: var(--blue-100);
+    background-color: var(--blue-50);
     color: #000;
     text-align: center;
-    width: 300px;
+    width: 50%;
     padding: 25px;
     border-radius: 20px;
 }
 
+#score-container h2 {
+    font-family: 'Baloo 2', cursive;
+    font-size: 2.5rem;
+}
+
 #score-container p {
-    font-size: 14px;
+    font-size: 1rem;
     margin: 20px 0;
 }
 
@@ -193,24 +198,25 @@ button {
     color: #075ea4;
 }
 
-#restart {
-    background-color: var(--orange-700);
+.score-buttons {
+    background-color: var(--blue-700);
     color: var(--white);
+    padding: 1rem;
     font-weight: bold;
-    height: 50px;
+    letter-spacing: 1px;
+    font-size: 1rem;
     border-radius: 25px;
-    border: 2px solid transparent;
-    width: 180px;
+    border: 0;
+    width: 200px;
     text-transform: uppercase;
     margin-top: 20px;
     cursor: pointer;
-    transition: .5s;
+    transition: .4s;
+    font-family: 'Montserrat', sans-serif;
 }
 
-#restart:hover {
-    background-color: transparent;
-    border-color: var(--orange-700);
-    color: var(--orange-700);
+.score-buttons:hover {
+    background-color: var(--orange-700);    
 }
 
 /* Quizz container  */
@@ -307,6 +313,33 @@ button {
     background-color: var(--green-700);
     color: var(--white);
 }
+
+audio {
+    width: 60%;
+}
+
+audio::-webkit-media-controls-panel {
+    background-color: var(--blue-700);
+}
+
+audio::-webkit-media-controls-mute-button,
+audio::-webkit-media-controls-play-button {
+    background-color: var(--white);
+    border-radius: 50%;
+}
+
+audio::-webkit-media-controls-timeline {
+    background-color: var(--white);
+    border-radius: 20px;
+    margin: 0 1rem;
+}
+
+audio::-webkit-media-controls-timeline-container,
+audio::-webkit-media-controls-current-time-display,
+audio::-webkit-media-controls-time-remaining-display {
+    color: var(--white);
+}
+
 
 /*  RESPONSIVO */
 @media(max-width: 450px) {
