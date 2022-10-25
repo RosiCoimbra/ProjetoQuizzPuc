@@ -138,13 +138,16 @@ button {
 }
 
 .quizz-header div {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
     background-color: var(--blue-200);
     padding: .5rem 1.5rem;
     color: var(--gray-900);
     border-radius: 8px;
+}
+
+.quizz-header .quiz-header-flex {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 /* .quizz-header-timer {

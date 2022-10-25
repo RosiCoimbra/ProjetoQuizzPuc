@@ -82,13 +82,30 @@ function init() {
   if(user.length > 0){
     document.querySelector('#modal').classList.add('hide')
     createQuestion(0);
-    document.querySelector('#displayNameUser').textContent = user
+    document.querySelector("#displayNameUser").textContent = user
     document.querySelector("#questions-total").textContent = questions.length;
   }
 }
 
 // Cria a pergunta
 function createQuestion(i) {
+  let seconds = 15
+  document.querySelector("#seconds").textContent = seconds
+
+  //Iniciar contador de tempo (30 segundos)
+  const timer = setInterval(() => {
+    seconds--
+    if(seconds > 9) {
+      document.querySelector("#seconds").textContent = seconds
+    } else {
+      document.querySelector("#seconds").textContent = `0${seconds}`
+    }
+
+    if(seconds <= 0){
+      clearInterval(timer)
+      nextQuestion()
+    }
+  }, 1000)
 
   // Limpar a questão anterior
   const oldButtons = answersBox.querySelectorAll("button");
@@ -121,7 +138,7 @@ function createQuestion(i) {
 
     // Inserir um evento de click no botão
     answerTemplate.addEventListener("click", function () {
-      checkAnswer(this);
+      checkAnswer(this, timer);
     });
 
   });
@@ -131,7 +148,8 @@ function createQuestion(i) {
 }
 
 // Verificando a resosta do usuário
-function checkAnswer(btn) {
+function checkAnswer(btn, timer) {
+  clearInterval(timer)
 
   // seleciona todos os botões
   const buttons = answersBox.querySelectorAll("button");
@@ -218,6 +236,7 @@ function restartQuizz() {
   init();
 }
 
+// Armazenar dados no localStorage
 function storeResult(){
   const previousResults = JSON.parse(localStorage.getItem('quizResults'))
   let userData = []
