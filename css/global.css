@@ -24,7 +24,7 @@
 
     --red-700: #dc3545;
 
-    --yellow-500: #FBA94C;
+    --yellow-500: #facc15;
     
     --orange-700: #e78230;
 }
@@ -154,6 +154,19 @@ button {
     font-size: 2.5rem;
 } */
 
+.progress-bar {
+    width: 48%;
+    height: 12px;
+    border-radius: 12px;
+}
+  
+  .progress-bar div {
+    width: 100%;
+    height: 100%;
+    background-color: var(--green-700);
+    border-radius: 12px;
+}
+
 .main-container {
     display: flex;
     flex-direction: column;
@@ -228,6 +241,7 @@ button {
     overflow: hidden;
     padding: 2rem;
     background-color: var(--blue-50);
+    margin-top: 0.2rem;
 }
 
 #question {
@@ -359,6 +373,10 @@ audio::-webkit-media-controls-time-remaining-display {
 
     .quizz-header div {
         padding: .5rem 1rem;
+    }
+
+    .progress-bar {
+        width: 90%;
     }
 
     .quizz-answers-container img {

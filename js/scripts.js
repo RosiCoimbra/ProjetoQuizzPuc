@@ -108,8 +108,24 @@ function init() {
 
 // Cria a pergunta
 function createQuestion(i) {
+  let milliseconds = 15000
   let seconds = 15
   document.querySelector("#seconds").textContent = seconds
+
+  //Iniciar barra de progresso
+  document.querySelector('#bar').style['background-color'] = "var(--green-700)"
+  const timerProgressBar = setInterval(() => {
+    const progressBarTimer = ((milliseconds / 15000) * 100).toFixed(2)
+    document.querySelector('#bar').style.width = `${progressBarTimer}%`
+    milliseconds = milliseconds - 5
+    if(milliseconds <= 11250) document.querySelector('#bar').style['background-color'] = "var(--yellow-500)"
+    if(milliseconds <= 7500) document.querySelector('#bar').style['background-color'] = "var(--orange-700)"
+    if(milliseconds <= 3750) document.querySelector('#bar').style['background-color'] = "var(--red-700)"
+    
+    if(milliseconds < 0) {
+      clearInterval(timerProgressBar)
+    }
+  },5)
 
   //Iniciar contador de tempo (15 segundos)
   const timer = setInterval(() => {
@@ -169,7 +185,7 @@ function createQuestion(i) {
 
     // Inserir um evento de click no botão
     answerTemplate.addEventListener("click", function () {
-      checkAnswer(this, timer);
+      checkAnswer(this, timer, timerProgressBar);
     });
   }
 
@@ -178,8 +194,9 @@ function createQuestion(i) {
 }
 
 // Verificando a resposta do usuário
-function checkAnswer(btn, timer) {
+function checkAnswer(btn, timer, timerProgressBar) {
   clearInterval(timer)
+  clearInterval(timerProgressBar)
 
   // seleciona todos os botões
   const buttons = answersBox.querySelectorAll("button");
@@ -253,6 +270,7 @@ function showSucccessMessage() {
 // mostra ou esconde o score
 function hideOrShowQuizz() {
   document.querySelector('.quizz-header').classList.toggle('hide');
+  document.querySelector('.progress-bar').classList.toggle('hide');
   quizContainer.classList.toggle("hide");
   scoreContainer.classList.toggle("hide");
 }
