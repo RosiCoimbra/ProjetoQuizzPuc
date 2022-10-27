@@ -12,70 +12,168 @@ let actualQuestion = 0;
 // Perguntas
 const questions = [
   {
-    "question": "PHP foi desenvolvido para qual fim?",
-    "audio": "paris.mp3",
-    "answers": [
-      {
-        "answer": "back-end",
-        "correct": true
-      },
-      {
-        "answer": "front-end",
-        "correct": false
-      },
-      {
-        "answer": "Sistema operacional",
-        "correct": false
-      },
-      {
-        "answer": "Banco de dados",
-        "correct": false
-      },
-    ]
-  },
-  {
-    "question": "Uma forma de declarar variável em JavaScript:",
-    "answers": [
-      {
-        "answer": "$var",
-        "correct": false
-      },
-      {
-        "answer": "var",
-        "correct": true
-      },
-      {
-        "answer": "@var",
-        "correct": false
-      },
-      {
-        "answer": "#let",
-        "correct": false
-      },
-    ]
-  },
-  {
-    "question": "Qual o seletor de id no CSS?",
-    "answers": [
-      {
-        "answer": "#",
-        "correct": true
-      },
-      {
-        "answer": ".",
-        "correct": false
-      },
-      {
-        "answer": "@",
-        "correct": false
-      },
-      {
-        "answer": "/",
-        "correct": false
-      },
-    ]
-  },
-]
+      "question": "PHP foi desenvolvido para qual fim?",
+      "audio": "paris.mp3",
+      "answers": [
+        {
+          "answer": "back-end",
+          "correct": true
+        },
+        {
+          "answer": "front-end",
+          "correct": false
+        },
+        {
+          "answer": "Sistema operacional",
+          "correct": false
+        },
+        {
+          "answer": "Banco de dados",
+          "correct": false
+        },
+      ]
+    },
+    {
+      "question": "Uma forma de declarar variável em JavaScript:",
+      "answers": [
+        {
+          "answer": "$var",
+          "correct": false
+        },
+        {
+          "answer": "var",
+          "correct": true
+        },
+        {
+          "answer": "@var",
+          "correct": false
+        },
+        {
+          "answer": "#let",
+          "correct": false
+        },
+      ]
+    },
+    {
+      "question": "Qual o seletor de id no CSS?",
+      "answers": [
+        {
+          "answer": "#",
+          "correct": true
+        },
+        {
+          "answer": ".",
+          "correct": false
+        },
+        {
+          "answer": "@",
+          "correct": false
+        },
+        {
+          "answer": "/",
+          "correct": false
+        },
+      ]
+    },
+    
+    {
+      "question": "A linguagem JavaScript provê uma série de métodos que facilitam a manipulação de arrays.Sobre o método de manipulação de array of, é correto afirmar que:",
+      "answers": [
+        {
+          "answer": "cria um novo array a partir dos argumentos passados para o método",
+          "correct": true
+        },
+        {
+          "answer": "cria um novo array a partir de um array existente",
+          "correct": false
+        },
+        {
+          "answer": "preenche o array com um valor estático",
+          "correct": false
+        },
+        {
+          "answer": "devolve @iterator, contendo os valores do array",
+          "correct": false
+        },
+      ]
+    },
+    {
+      "question": "Na linguagem JavaScript, ao invocar o método getElementsByClassName, do objeto document, será retornado:",
+      "image": "imagem1.jpeg",
+      "answers": [
+        {
+          "answer": "Um string",
+          "correct": true
+        },
+        {
+          "answer": "Um array",
+          "correct": false
+        },
+        {
+          "answer": "Um valor numérico",
+          "correct": false
+        },
+        {
+          "answer": "Uma função",
+          "correct": false
+        },
+        {
+          "answer": "Um objeto",
+          "correct": false
+        },
+      ]
+    },
+    {
+      "question": "Na linguagem JavaScript, o operador === (três sinais de igualdade) realiza a comparação apenas do",
+      "answers": [
+        {
+          "answer": "valor lógico dos operandos",
+          "correct": true
+        },
+        {
+          "answer": "valor e do tipo dos operandos",
+          "correct": false
+        },
+        {
+          "answer": "valor dos operandos",
+          "correct": false
+        },
+        {
+          "answer": "conteúdo dos operandos",
+          "correct": false
+        },
+        {
+          "answer": "tipo dos operandos",
+          "correct": false
+        },
+      ]
+    },
+    {
+      "question": "No javascript é possível interagir com o console dos navegadores. O comando para imprimir o texto PUC no console é:",
+      "answers": [
+        {
+          "answer": "console.log('PUC')",
+          "correct": true
+        },
+        {
+          "answer": "console.echo('PUC')",
+          "correct": false
+        },
+        {
+          "answer": "console.print('PUC')",
+          "correct": false
+        },
+        {
+          "answer": "console.dump('PUC')",
+          "correct": false
+        },
+        {
+          "answer": "Um objeto",
+          "correct": false
+        },
+      ]
+    },
+  ]
 
 // Gerar lista de números aleatórios
 let randomNumberListForQuestions = randomNumberListGenerator(questions.length)
