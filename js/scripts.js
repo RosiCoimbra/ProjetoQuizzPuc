@@ -258,7 +258,7 @@ function createQuestion(i) {
   document.querySelector("#question-number").textContent = i + 1;
 
   //Insere a imagem e o alt 
-  document.querySelector("#question-image").src = `../images/${questions[randomNumberListForQuestions[i]].image}`
+  document.querySelector("#question-image").src = `./images/${questions[randomNumberListForQuestions[i]].image}` 
   document.querySelector("#question-image").alt = questions[randomNumberListForQuestions[i]].imageDescription
 
   // Insere o audio da pergunta caso haja
