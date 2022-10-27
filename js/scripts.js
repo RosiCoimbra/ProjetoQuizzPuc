@@ -263,7 +263,7 @@ function createQuestion(i) {
 
   // Insere o audio da pergunta caso haja
   const elementAudio = document.createElement('source')
-  elementAudio.setAttribute('src', `../audio/${questions[randomNumberListForQuestions[i]].audio}`)
+  elementAudio.setAttribute('src', `./audio/${questions[randomNumberListForQuestions[i]].audio}`)
   elementAudio.setAttribute('type', 'audio/mpeg')
   questionAudio.appendChild(elementAudio)
   questionAudio.load()
