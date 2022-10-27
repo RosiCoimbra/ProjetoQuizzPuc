@@ -12,50 +12,58 @@ let actualQuestion = 0;
 // Perguntas
 const questions = [
   {
-      "question": "PHP foi desenvolvido para qual fim?",
-      "audio": "paris.mp3",
+      "question": "Qual o objetivo do atributo 'alt' da tag <img> do HTML?",
+      "image": "imageQuestion1.png",
+      "imageDescription": "Tag do html na cor branca com fundo azul",
+      "audio": "audioQuestion1.mp3",
       "answers": [
         {
-          "answer": "back-end",
+          "answer": "Fornecer uma legenda para a imagem",
+          "correct": false
+        },
+        {
+          "answer": "Identificar o tipo da imagem",
+          "correct": false
+        },
+        {
+          "answer": "Fornecer informações sobre a imagem, caso a mesma não seja carregada",
           "correct": true
         },
         {
-          "answer": "front-end",
-          "correct": false
-        },
-        {
-          "answer": "Sistema operacional",
-          "correct": false
-        },
-        {
-          "answer": "Banco de dados",
+          "answer": "Definir um endereço fonte onde a imagem está localizada",
           "correct": false
         },
       ]
     },
     {
       "question": "Uma forma de declarar variável em JavaScript:",
+      "image": "imageQuestion2.png",
+      "imageDescription": "Folha dobrada para simbolizar um arquivo javascript",
+      "audio": "audioQuestion2.mp3",
       "answers": [
         {
-          "answer": "$var",
+          "answer": "int",
           "correct": false
         },
         {
-          "answer": "var",
+          "answer": "let",
           "correct": true
         },
         {
-          "answer": "@var",
+          "answer": "double",
           "correct": false
         },
         {
-          "answer": "#let",
+          "answer": "boolean",
           "correct": false
         },
       ]
     },
     {
       "question": "Qual o seletor de id no CSS?",
+      "image": "imageQuestion3.png",
+      "imageDescription": "Olho humano com a cor azul, vermelha e verde dentro",
+      "audio": "audioQuestion3.mp3",
       "answers": [
         {
           "answer": "#",
@@ -77,32 +85,37 @@ const questions = [
     },
     
     {
-      "question": "A linguagem JavaScript provê uma série de métodos que facilitam a manipulação de arrays.Sobre o método de manipulação de array of, é correto afirmar que:",
+      "question": "A linguagem JavaScript provê uma série de métodos que facilitam a manipulação de arrays. Sobre o método de manipulação 'array.of()', é correto afirmar que:",
+      "image": "imageQuestion4.png",
+      "imageDescription": "Cubo roxo simulando a remoção de diversos quadrados verdes",
+      "audio": "audioQuestion4.mp3",
       "answers": [
         {
-          "answer": "cria um novo array a partir dos argumentos passados para o método",
+          "answer": "Cria um novo array a partir dos argumentos passados para o método",
           "correct": true
         },
         {
-          "answer": "cria um novo array a partir de um array existente",
+          "answer": "Cria um novo array a partir de um array existente",
           "correct": false
         },
         {
-          "answer": "preenche o array com um valor estático",
+          "answer": "Preenche o array com um valor estático",
           "correct": false
         },
         {
-          "answer": "devolve @iterator, contendo os valores do array",
+          "answer": "Devolve o @iterator, contendo os valores do array",
           "correct": false
         },
       ]
     },
     {
       "question": "Na linguagem JavaScript, ao invocar o método getElementsByClassName, do objeto document, será retornado:",
-      "image": "imagem1.jpeg",
+      "image": "imageQuestion5.png",
+      "imageDescription": "Hexágono com fundo laranja e com um quadrado branco dentro com a escrita DOM dentro",
+      "audio": "audioQuestion5.mp3",
       "answers": [
         {
-          "answer": "Um string",
+          "answer": "Uma string",
           "correct": true
         },
         {
@@ -117,39 +130,37 @@ const questions = [
           "answer": "Uma função",
           "correct": false
         },
-        {
-          "answer": "Um objeto",
-          "correct": false
-        },
       ]
     },
     {
-      "question": "Na linguagem JavaScript, o operador === (três sinais de igualdade) realiza a comparação apenas do",
+      "question": "Na linguagem JavaScript, o operador === (três sinais de igualdade) realiza a seguinte comparação:",
+      "image": "imageQuestion6.png",
+      "imageDescription": "Três frascos simbolizando teste genético",
+      "audio": "audioQuestion6.mp3",
       "answers": [
         {
-          "answer": "valor lógico dos operandos",
+          "answer": "Valor lógico dos operandos",
+          "correct": false
+        },
+        {
+          "answer": "Valor e do tipo dos operandos",
           "correct": true
         },
         {
-          "answer": "valor e do tipo dos operandos",
+          "answer": "Valor dos operandos",
           "correct": false
         },
         {
-          "answer": "valor dos operandos",
-          "correct": false
-        },
-        {
-          "answer": "conteúdo dos operandos",
-          "correct": false
-        },
-        {
-          "answer": "tipo dos operandos",
+          "answer": "Conteúdo dos operandos",
           "correct": false
         },
       ]
     },
     {
-      "question": "No javascript é possível interagir com o console dos navegadores. O comando para imprimir o texto PUC no console é:",
+      "question": "No javascript é possível interagir com o console dos navegadores. O comando para imprimir o texto 'PUC' no console é:",
+      "image": "imageQuestion7.png",
+      "imageDescription": "Conjunto de logotipo de vários navegadores",
+      "audio": "audioQuestion7.mp3",
       "answers": [
         {
           "answer": "console.log('PUC')",
@@ -165,10 +176,6 @@ const questions = [
         },
         {
           "answer": "console.dump('PUC')",
-          "correct": false
-        },
-        {
-          "answer": "Um objeto",
           "correct": false
         },
       ]
@@ -206,14 +213,14 @@ function init() {
 
 // Cria a pergunta
 function createQuestion(i) {
-  let milliseconds = 15000
-  let seconds = 15
+  let milliseconds = 30000
+  let seconds = 30
   document.querySelector("#seconds").textContent = seconds
 
   //Iniciar barra de progresso
   document.querySelector('#bar').style['background-color'] = "var(--green-700)"
   const timerProgressBar = setInterval(() => {
-    const progressBarTimer = ((milliseconds / 15000) * 100).toFixed(2)
+    const progressBarTimer = ((milliseconds / 30000) * 100).toFixed(2)
     document.querySelector('#bar').style.width = `${progressBarTimer}%`
     milliseconds = milliseconds - 5
     if(milliseconds <= 11250) document.querySelector('#bar').style['background-color'] = "var(--yellow-500)"
@@ -225,7 +232,7 @@ function createQuestion(i) {
     }
   },5)
 
-  //Iniciar contador de tempo (15 segundos)
+  //Iniciar contador de tempo (30 segundos)
   const timer = setInterval(() => {
     seconds--
     if(seconds > 9) {
@@ -250,16 +257,17 @@ function createQuestion(i) {
   question.querySelector("#question-text").textContent = questions[randomNumberListForQuestions[i]].question;
   document.querySelector("#question-number").textContent = i + 1;
 
+  //Insere a imagem e o alt 
+  document.querySelector("#question-image").src = `../images/${questions[randomNumberListForQuestions[i]].image}`
+  document.querySelector("#question-image").alt = questions[randomNumberListForQuestions[i]].imageDescription
+
   // Insere o audio da pergunta caso haja
-  if(questions[randomNumberListForQuestions[i]].audio){
-    const elementAudio = document.createElement('source')
-    elementAudio.setAttribute('src', `../music/${questions[randomNumberListForQuestions[i]].audio}`)
-    elementAudio.setAttribute('type', 'audio/mpeg')
-    questionAudio.appendChild(elementAudio)
-    questionAudio.classList.remove('hide')
-  } else {
-    questionAudio.classList.add('hide')
-  }
+  const elementAudio = document.createElement('source')
+  elementAudio.setAttribute('src', `../audio/${questions[randomNumberListForQuestions[i]].audio}`)
+  elementAudio.setAttribute('type', 'audio/mpeg')
+  questionAudio.appendChild(elementAudio)
+  questionAudio.load()
+  questionAudio.classList.remove('hide')
 
   // Insere as alternativas
   for(x = 0; x < randomNumberListForAnswer.length; x++){

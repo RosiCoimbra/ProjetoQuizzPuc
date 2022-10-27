@@ -1,6 +1,6 @@
 /*  GERAL */
 :root {
-    --background: #FAFAFA;
+    --background: #bae6fd;
     --white: #FFF;
 
     --gray-100: #E1E1E6;
@@ -120,7 +120,7 @@ button {
 
 .main-title {
     padding: 40px 0;
-    color: #FAFAFA;
+    color: var(--white);
     text-align: center;
     background-color: var(--blue-900);
     border-bottom-left-radius: 50%;
@@ -150,10 +150,6 @@ button {
     gap: 0.5rem;
 }
 
-/* .quizz-header-timer {
-    font-size: 2.5rem;
-} */
-
 .progress-bar {
     width: 48%;
     height: 12px;
@@ -179,7 +175,7 @@ button {
 
 #score-container {
     background-color: var(--blue-50);
-    color: #000;
+    color: var(--gray-900);
     text-align: center;
     width: 50%;
     padding: 25px;
@@ -203,12 +199,12 @@ button {
 
 #correct-answers {
     font-weight: bold;
-    color: #40b576;
+    color: var(--green-700);
 }
 
 #questions-qty {
     font-weight: bold;
-    color: #075ea4;
+    color: var(--blue-700);
 }
 
 .score-buttons {
@@ -265,8 +261,10 @@ button {
 }
 
 .quizz-answers-container img {
-    max-width: 300px;
+    width: 300px;
     height: 100%;
+    max-height: 300px;
+    margin: 1rem;
 }
 
 #answers-box {
@@ -279,7 +277,6 @@ button {
     margin: 15px 0;
     width: 100%;
     padding: 0.2rem;
-    text-transform: capitalize;
     border-radius: 25px;
     background-color: var(--blue-100);
     border: 2px solid transparent;
@@ -356,6 +353,18 @@ audio::-webkit-media-controls-time-remaining-display {
 
 
 /*  RESPONSIVO */
+
+@media (max-width: 1440px) {
+    .quizz-header,
+    #quizz-container {
+        width: 70%;
+    }
+
+    .progress-bar {
+        width: 68%;
+    }
+}
+
 @media(max-width: 450px) {
 
     body {
